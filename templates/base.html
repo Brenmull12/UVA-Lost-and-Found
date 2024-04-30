@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+{% load static %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% include 'logout_modal.html' %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+    <title>UVA Lost and Found</title>
+</head>
+
+<!-- Navbar -->
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'index' %}">Lost and Found</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% if user.is_superuser %}
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'admin:index' %}"> Developer </a>
+                        </li>
+                    {% endif %}
+
+                    {#          <li class="nav-item">#}
+                    {#            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>#}
+                    {#          </li>#}
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'info' %}"> About</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                View Items
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'items:index_lost' %}">View Lost Items</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'items:index_found' %}">View Found
+                                    Items</a></li>
+                            </ul>
+                        </li>
+
+                        {% if user.is_site_admin %}
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{% url 'site_admin:review' %}">Review Items</a>
+                            </li>
+
+                        {% else %}
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Report
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'items:report_lost' %}">Report Lost</a>
+                                <li><a class="dropdown-item" href="{% url 'items:report_found' %}">Report Found</a>
+                            </ul>
+
+                        {%endif%}
+
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'items:report_found' %}">Report Found Item</a>
+                        </li>
+                    {%endif%}
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        {% if not user.is_site_admin %}
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{% url 'common_user:history' %}">View My Post History</a>
+                            </li>
+                        {%endif%}
+                        <a class="nav-link active" aria-current="page" href="{% url 'account_logout' %}" data-bs-toggle="modal" data-bs-target="#logoutModal"> 
+                            Sign Out
+                        </a>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'account_login' %}">Login or Sign Up</a>
+                        </li>
+                    {%endif%}
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+<body>
+<div class="wrapper">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+
+<footer class="relative-bottom p-3 mt-auto">
+    <p>This system is a class project. As such, it is not monitored and no real information should be submitted. </p>
+</footer>
+
+</html>

@@ -1,0 +1,26 @@
+{% extends "authentication/login.html" %}
+{% load allauth i18n %}
+{% load static %}
+
+{% block head_title %}
+    {% trans "Sign Out" %}
+{% endblock head_title %}
+
+{% block content %}
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login-styles.css' %}">
+</head>
+
+<div class="content">
+    <h1> Sign out </h1>
+    <p>Are you sure you want to sign out?</p>
+    <form method="post" action="/accounts/logout/">
+        {% csrf_token %}
+        <div class="submit-btn-container">
+            <button class="btn btn-black" type="submit">Sign out</button>      
+        </div>  
+    </form>
+</div>
+{% endblock content %}

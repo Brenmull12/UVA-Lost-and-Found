@@ -1,0 +1,23 @@
+<!-- Bootstrap modal for logout confirmation -->
+<div class="modal fade" id="flagPostModal" tabindex="-1" aria-labelledby="flagPostModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="flagModalLabel">Confirm Flagging Post</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to flag this post as having concerning content?
+            </div>
+            <div class="modal-footer">
+                <div class="submit-btn-container">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+                <form method="post" action="{% url 'items:flag' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Flag Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

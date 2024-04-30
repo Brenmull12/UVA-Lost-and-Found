@@ -1,0 +1,121 @@
+html {
+    box-sizing: border-box;
+}
+
+h3 {
+    word-wrap: break-word;
+    max-width: 100%;
+    font-size: 24px;
+}
+
+h3:hover {
+    cursor: pointer;
+}
+
+.container {
+    padding-top: 70px; 
+    margin-top: 20px; 
+    margin-bottom: 20px;
+    background: #fff;
+    border-left: 4px solid #007bff;
+
+}
+.item-container {
+    display: flex;
+    /* grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr; */
+    flex-direction: column;
+    /* justify-content: space-between; */
+    background: #ffffff;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    width: 100%;    
+}
+
+.item-name {
+    max-width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    inline-size: 100%;
+}
+
+.item-details {
+    margin-top: 30px;
+    margin-bottom: 35px;
+}
+
+.details-link {
+    display: block;
+    text-align: center;
+    align-self: center;
+    color: #007bff;
+    text-decoration: none;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
+}
+
+/* Grid Layout */
+@media screen and (min-width: 600px) {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 20px;
+    }
+}
+
+/*@media screen and (max-width: 599px) {*/
+/*    .container {*/
+/*        display: grid;*/
+/*        grid-template-columns: 1fr;*/
+/*        grid-gap: 20px;*/
+/*    }*/
+/*}*/
+
+.lost-item-component .item_name,
+.lost-item-component .status,
+.lost-item-component .dateFound {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+
+/* Responsive cards in a row */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 -8px;
+}
+
+.column {
+    flex: 1;
+    max-width: 33%;
+    box-sizing: border-box;
+    padding: 0 8px;
+    margin-bottom: 16px;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 1000px) {
+    .column {
+        max-width: 50%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        max-width: 100%;
+    }
+}

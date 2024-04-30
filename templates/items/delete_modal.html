@@ -1,0 +1,23 @@
+<!-- Bootstrap modal for logout confirmation -->
+<div class="modal fade" id="deletePostModal" tabindex="-1" aria-labelledby="deletePostModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deletePostModalLabel">Confirm Post Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your post?
+            </div>
+            <div class="modal-footer">
+                <div class="submit-btn-container">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+                <form action="{% url 'items:delete' item.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

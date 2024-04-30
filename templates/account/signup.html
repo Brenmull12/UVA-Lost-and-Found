@@ -1,0 +1,83 @@
+{% extends "authentication/login.html" %}
+{% load allauth i18n %}
+{% load static %}
+{% load socialaccount %}
+
+{% block head_title %}
+    {% trans "Signup" %}
+{% endblock head_title %}
+
+{% block content %}
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login-styles.css' %}">
+</head>
+
+<div class="content">
+    <div class="container p-4 text-center">
+        <h1> Lost and Found </h1>
+    </div>
+
+    <div class="account-container">
+        <h3>Create an account</h3>
+
+        <form method="post" action="/accounts/signup/">
+            {% csrf_token %}
+            <div class="error-list">
+                {% if form.errors %}
+                    <ul class="error-list-unstyled">
+                        {% for field, errors in form.errors.items %}
+                            {% for error in errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="input-container">
+                <div class="email-input-container">
+                    <label for="id_email">Email:</label>
+                    <input type="email" name="email" placeholder="Email address" autocomplete="email" maxlength="320" required="" id="id_email">
+                </div>
+                <div>
+                    <label for="id_password1">Password:</label>
+                    <input type="password" name="password1" placeholder="Password" autocomplete="new-password" required="" aria-describedby="id_password1_helptext" id="id_password1">
+                </div>
+                <ul class="small-list">
+                    <li>Your password can’t be too similar to your email.</li>
+                    <li>Your password must contain at least 8 characters.</li>
+                    <li>Your password can’t be a commonly used password.</li>
+                    <li>Your password can’t be entirely numeric.</li>
+                </ul>
+                <div>
+                    {% comment %} <label for="id_password2">Password (again):</label> {% endcomment %}
+                    <input type="password" name="password2" placeholder="Confirm password" autocomplete="new-password" required="" id="id_password2">
+                </div>
+            </div>
+            {% comment %} <span class="helptext" id="id_password1_helptext"></span> {% endcomment %}
+        
+            <div class="submit-btn-container" id="create-account-button-container">
+                <button class="btn btn-black" type="submit">Sign up</button>      
+            </div>   
+        </form>
+        <p>
+            Already have an account? Then please <a href="{{ login_url }}">sign in</a>
+        </p>
+        <hr/>
+
+        <p class="grey"> or continue with Google </p>
+
+        <a href="{% provider_login_url 'google' %}">
+			<button class="btn btn-white google">
+				<div class="google-logo">
+					<img src="https://lostandfound-bkt-0.s3.amazonaws.com/srcImage/GoogleLogo.png" alt="Button Image">
+				</div>
+				<span>Google</span>
+			</button>
+		</a>
+    </div>
+
+</div>
+{% endblock content %}

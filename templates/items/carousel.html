@@ -1,0 +1,66 @@
+<div id="carousel-{{ item.id }}" class="carousel slide carouselExampleIndicators" data-bs-ride="carousel" data-bs-interval="7000">
+    <div class="carousel-inner">
+        {% for file in item.files %}
+            <div class="carousel-item {% if forloop.first %} active {% endif %}">
+
+                {% comment %} PDFs {% endcomment %}
+                {% if file.type == 'pdf' %}
+                    <div class="file-container">
+                        <embed src="{{ file.file.url }}" type="application/pdf" class="file-content" width="100%" height="100%">
+                    </div>
+                
+                {% comment %} TXT or Plain files {% endcomment %}
+                {% elif file.type == 'txt' or file.type == 'plain'%}
+                    <div class="file-container">
+                        <embed src="{{ file.file.url }}" type="text/plain" class="file-content" width="100%" height="100%">
+                    </div>
+
+                {% comment %} Images {% endcomment %}
+                {% elif file.type == 'png' or file.type == 'jpeg' %}
+                    <div class="image-container">
+                        <img src="{{ file.file.url }}" class="file-content" id="image-{{ forloop.counter }}">
+                    </div>
+
+                    {% comment %} Logic to determine if image is landscape or portrait to have correct dimensions {% endcomment %}
+                    <script>
+                        var img = document.getElementById("image-{{item.id}}-{{ forloop.counter }}");
+                        img.onload = function() {
+                            var width = this.naturalWidth;
+                            var height = this.naturalHeight;
+                            if (width > height) {
+                                this.classList.add("landscape");
+                            } else {
+                                this.classList.add("portrait");
+                            }
+                        };
+                        img.src = "{{ file.file.url }}";
+                    </script>
+
+                {% comment %} Something else, should be downloadable with the download button {% endcomment %}
+                {% else %}    
+                    Could not display file.
+                    <br>
+                    <a href="{{ file.file.url }}">
+                        <button class="btn btn-black">Download</button>
+                    </a>
+                {% endif %}
+
+            </div>
+        {% endfor %}
+
+    </div>
+
+
+    {% comment %} Buttons to navigate the files if there are multiple {% endcomment %}
+    {% if item.files|length > 1 %}
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-{{ item.id }}" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel-{{ item.id }}" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    {% endif %}
+</div>

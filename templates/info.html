@@ -1,0 +1,162 @@
+<!-- templates/site_info.html -->
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/welcome-styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
+
+    <script>
+      function copyEmail(emailElement) {
+        var emailText = emailElement.innerText;
+        navigator.clipboard.writeText(emailText)
+          .then(function() {
+            console.log('Email copied successfully');
+            // Show the popup
+            var popup = document.getElementById('popup');
+            popup.style.display = 'block';
+            // Hide the popup after 2 seconds
+            setTimeout(function() {
+              popup.style.display = 'none';
+            }, 2000);
+          })
+          .catch(function(err) {
+            console.error('Error copying email: ', err);
+            alert('Failed to copy email');
+          });
+      }
+    </script>
+</head>
+
+<body>
+<div class="about-section">
+  <h1>Lost and Found</h1>
+  <p>This site is a University-centered Lost and Found app. </p>
+  <p>We created this site during the Spring of 2024 in CS 3240 at the University of Virginia.</p>
+</div>
+
+<div class="explainer">
+  <h2>Why a Lost and Found Site</h2>
+  <p>Currently, there exists no mainstream, organized way of reporting lost or found items at the University. 
+      Students use a variety of means to report their items such as a GroupMe thread, or class Snapchat stories. 
+      The GroupMe, though, contains a limited number of students, and you must be manually added to the group to submit an item as lost or found.
+      The Snapchat story is effective in getting your report to see a large number of people, but reports disappear after 24 hours.</p>
+  <p>We saw an issue with this, and came up with a solution. </p>
+</div>
+
+<div class="explainer">
+  <h2>About Lost and Found</h2>
+  <p>Our site facilitates anonymous users and users with an account, or common users. 
+    Anonymous users can submit a report of a found item, and common users can submit a report for lost or found items.
+    Since reporting a lost item will require a follow-up from admin, we restrict lost item reports to only users with accounts.
+  </p>
+  <p>Once a report is submitted, a common user can view their own post history, or view a feed of lost or found items.
+      Site administrators can view reports and approve them with the option to submit text explanation for the resolution.
+      This approval will be visible for common users, and can help them locate their lost items, or let them know that a found item has been retrieved by its owner. 
+  </p>
+  <p>There is also an option for common users to mark a post they see as "flagged." 
+      A post should be flagged if it is a duplicate post, or contains sensitive information or illegal contents.
+      Once a post has been marked as flagged, admin will review the post and resolve as necessary.
+  </p>
+  <p>The intention of this app is to provide a safe, effective way of returning lost items to their owner. 
+      Since this is a class project, please do not submit any real information. 
+  </p>
+</div>
+
+<div class="explainer">
+  <h2>How To Use Lost and Found</h2>
+  <h3>Anonymous Users:</h3>
+  <p> As an anonymous user, you can submit an item as "found". 
+    To do so, simply navigate to the "Report Found Item" page, and fill out the form with information regarding the item you found.
+    None of your personal information will be recorded or shared with anyone.
+    From there, our site administrators will do their best to ensure that the found item is returned to its owner. 
+    Thank you for your help!
+  </p>
+  <p> If you would like to create an account, please navigate to the "Login or Sign Up" page.
+    There, you can either log in via Google login or through the site login. 
+    If you don't have an account, you can create an account through the "Create an account" page.</p>
+  <h3>With an Account:</h3>
+  <p> As a user with an account, you have some additional features available. </p>
+  <p> You have the ability to submit reports for both items that you found, as well as your own items that you have lost. 
+    Under the "Report" tab, you can navigate to the respective reporting pages for lost and found items, and fill out the form for your lost or found item.
+  <p> As a common user, you also have the option to browse lost and found items in your community. 
+    That way, you can determine if any found items belong to yourself or someone you may know, or determine if you may have located any lost items.
+    From each feed page, you can click on 'view more details' to see all of the information about an item.
+    You may also wish to flag a post if you deem it to be inappropriate, a duplicate or spam. 
+    This will remove the item from the feed and send it to a site administrator for review.  </p>
+    You also have the option to view your own post history to check the status of your submissions. 
+    If an item is 'Under Review', it has been viewed by a site administrator. In constrast, if it is 'Submitted', your item has not been.
+     If a post is 'Approved', it means the submission has been reviewed and approved to be visible on the feed by an administrator, and you may receive a text explanation of this resolution on your Post History page.
+     You have the option to delete your own post, and in addtion, a site administrator has the option to remove your post from the feed. 
+     Once removed, your post will still be visible on your submission history page, and you have the option to permanently delete your post or appeal the post's rejection.
+  </p>
+</div>
+
+  
+<h2 style="text-align:center">Our Team</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="https://lostandfound-bkt-0.s3.amazonaws.com/developer-images/Brennen.jpg" alt="Brennen" style="width:100%">
+      <div class="container">
+        <h2>Brennen Muller</h2>
+        <p class="title">Scrum Master</p>
+        <p class="email" onclick="copyEmail(this)">sem9bd@virginia.edu</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="https://lostandfound-bkt-0.s3.amazonaws.com/developer-images/Kevin.jpg" alt="Kevin" style="width:100%">
+      <div class="container">
+        <h2>Kevin Lam</h2>
+        <p class="title">DevOps Manager</p>
+        <p class="email" onclick="copyEmail(this)">mvk2uy@virginia.edu</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="https://lostandfound-bkt-0.s3.amazonaws.com/developer-images/Brian.jpg" alt="Brian" style="width:100%">
+      <div class="container">
+        <h2>Brian Tafazoli</h2>
+        <p class="title">Testing Manager</p>
+        <p class="email" onclick="copyEmail(this)">vve6js@virginia.edu</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="https://lostandfound-bkt-0.s3.amazonaws.com/developer-images/Eli.jpg" alt="Eli" style="width:100%">
+      <div class="container">
+        <h2>Eli Hiscott</h2>
+        <p class="title">Requirements Manager</p>
+        <p class="email" onclick="copyEmail(this)">ydt5vy@virginia.edu</p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="https://lostandfound-bkt-0.s3.amazonaws.com/developer-images/lindsay.jpg" alt="Lindsay" style="width:100%">
+      <div class="container">
+        <h2>Lindsay Lian</h2>
+        <p class="title">Software Architect</p>
+        <p class="email" onclick="copyEmail(this)">eeq5dn@virginia.edu</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="popup" class="popup">Email copied</div>
+
+</body>
+  {% endblock %}

@@ -1,0 +1,40 @@
+{% extends "socialaccount/base_entrance.html" %}
+{% load i18n %}
+{% load allauth %}
+{% load static %}
+
+{% block head_title %}
+    {% trans "Sign In" %}
+{% endblock head_title %}
+
+{% block content %}
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login-styles.css' %}">
+</head>
+
+<div class="content">
+    {% if process == "connect" %}
+        {% element h1 %}
+            {% blocktrans with provider.name as provider %}Connect {{ provider }}{% endblocktrans %}
+        {% endelement %}
+        <p>
+            {% blocktrans with provider.name as provider %}You are about to connect a new third-party account from {{ provider }}.{% endblocktrans %}
+        </p>
+    {% else %}
+        {% element h1 %}
+            {% blocktrans with provider.name as provider %}Sign In Via {{ provider }}{% endblocktrans %}
+        {% endelement %}
+        <p>
+            {% blocktrans with provider.name as provider %}You are about to sign in using a third-party account from {{ provider }}.{% endblocktrans %}
+        </p>
+    {% endif %}
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="submit-btn-container">
+            <button class="btn btn-black" type="submit">Continue</button>      
+        </div>   
+    </form>
+</div>
+{% endblock content %}

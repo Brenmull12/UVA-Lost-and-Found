@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/item-detail.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+
+    <body>
+    <!-- Page title -->
+    {% block title %}
+        <div style="margin:auto; padding-top:2%">
+            <h1>
+                {% if is_found %}
+                    Found
+                {% else %}
+                    Lost
+                {% endif %}
+                Items
+            </h1>
+        </div>
+    {% endblock %}
+
+    {% if user.is_authenticated %}
+        <!-- form for filtering -->
+        <div class="container p-3">
+            <form method="get" action="{{ request.path }}" class="form-inline"
+                  style="grid-column-start: 1; grid-column-end: 4">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <label for="id_tag" class="form-label">Select a tag:</label>
+                        <select name="tag" id="id_tag" class="form-select">
+                            {% for tag_value, tag_label in form.fields.tag.choices %}
+                                <option value="{{ tag_value }}" {% if request.GET.tag == tag_value %}
+                                        selected {% endif %}>
+                                    {{ tag_label }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <br>
+                        <input type="submit" value="Submit" class="btn btn-black">
+                        <button type="submit" name="clear" class="btn btn-secondary">Clear Filters</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="container p-3">
+            {% if items %}
+                {% for item in items %}
+                    <div class="item-container" id="{{ item.id }}">
+                        <div class="item-header">
+                            <div class="item-name">
+                                <h3 onclick="redirectToDetails('{{ item.id }}')">{{ item.item_name }}</h3>
+                            </div>
+
+                            {% if item.tag %}
+                                <div class="tag-container">
+                                    <i class="fa fa-tag"></i>
+                                    <div class="tag-text">
+                                        {{ item.get_tag_display }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        {% if item.files %}
+                            <div class="files-container">
+                                {% include 'items/carousel.html' %}
+                            </div>
+                        {% endif %}
+                        <div class="item-details">
+                            <div class="item-location">Location: {{ item.location }}</div>
+                            <div class="item-date">
+                                Date 
+                                {% if item.is_found %} Found: 
+                                {% else %} Lost: {% endif %} 
+                                {{ item.date }}
+                            </div>
+                        </div>
+                        <a href="{% url 'items:details' item.id %}" class="details-link">Click to view more details</a>
+                    </div>
+                {% endfor %}
+
+
+            {% else %}
+                {% block empty_message %}
+                    <p> No items lost! </p>
+                {% endblock %}
+            {% endif %}
+        </div>
+    {% else %}
+        <p> As an anonymous user, you do not have access to this page.
+            Please log in to view posts. </p>
+    {% endif %}
+    <script>
+        function redirectToDetails(itemId) {
+            window.location.href = "{% url 'items:details' 0 %}".replace("0", itemId);
+        }
+    </script>
+    </body>
+{% endblock %}

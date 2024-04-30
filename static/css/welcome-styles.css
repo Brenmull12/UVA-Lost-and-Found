@@ -1,0 +1,40 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3%;
+}
+
+.content p {
+    text-align: center;
+    margin: 0px;
+}
+
+/* Button containers */
+.btn-container {
+    margin-top: 19px;
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+}
+
+.btn-wrapper {
+    width: 45%;
+    height: 35%;
+}
+
+.btn {
+    width: 100%;
+    height: 100%;
+}
+
+.option-container {
+    min-width: 300px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.signin {
+    margin-top: 5px;
+}

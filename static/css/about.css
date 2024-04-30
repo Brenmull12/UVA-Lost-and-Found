@@ -1,0 +1,90 @@
+.about-section {
+    padding: 50px 20px;
+    text-align: center;
+    /*background-color: #ffffff;*/
+    color: #333;
+}
+
+.explainer {
+    margin: 20px 15px;
+    padding: 20px;
+    background: #fff;
+    border-left: 4px solid #007bff;
+}
+
+.card img {
+    display: block;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.card .container {
+    padding: 2px 16px;
+}
+
+.card .title {
+    color: black;
+    margin-bottom: 15px;
+}
+
+.card p {
+    margin: 15px 0;
+}
+
+.email {
+    color: #007bff;
+}
+
+.email:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Responsive cards in a row */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 -8px;
+}
+
+.column {
+    flex: 1;
+    max-width: 33%;
+    box-sizing: border-box;
+    padding: 0 8px;
+    margin-bottom: 16px;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 1000px) {
+    .column {
+        max-width: 50%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        max-width: 100%;
+    }
+}
+
+.popup {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: none; /* Initially hidden */
+}

@@ -1,0 +1,98 @@
+{% extends "authentication/login.html" %}
+{% load i18n %}
+{% load allauth account %}
+{% load allauth %}
+{% load socialaccount %}
+{% load static %}
+
+{% block head_title %}
+    {% trans "Sign In" %}
+{% endblock head_title %}
+
+{% block content %}
+{% comment %} Weird this has to be here but it seems like it overrides default .btn styling {% endcomment %}
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login-styles.css' %}">
+</head>
+
+<div class="content">
+    <div class="container p-4 text-center">
+        <h1> Lost and Found </h1>
+    </div>
+
+    <div class="account-container">
+        <h3>Sign in</h3>
+
+        <form method="post" action="/accounts/login/">
+            {% csrf_token %}
+            {% comment %} <input type="hidden" name="csrfmiddlewaretoken" value="ZdRlA4pZB0ztij99rQq7g9a29Lf4GOY3p9PIYqB1h1S1XF1nWmbVV2Mimil9IGaf"> {% endcomment %}
+                <div class="error-list">
+                    {% if form.errors %}
+                        <ul class="error-list-unstyled">
+                            {% for field, errors in form.errors.items %}
+                                {% for error in errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="input-container">
+                    <div class="email-input-container">
+                        <label for="id_login">Email:</label>
+                        <input type="email" name="login" placeholder="Email address" autocomplete="email" maxlength="320" required="" aria-invalid="true" id="id_login">    
+                    </div>
+                    <div>
+                        <label for="id_password">Password:</label>
+                        <input type="password" name="password" placeholder="Password" autocomplete="current-password" required="" aria-invalid="true" aria-describedby="id_password_helptext" id="id_password">
+                    </div>
+                </div>
+                <div class="additional-login-actions">
+                    <div class="remember-me-container">
+                        <div>
+                            <label for="id_remember">Remember Me:</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="remember" id="id_remember"> 
+                        </div>
+                    </div> 
+                    <div>
+                        <span class="helptext" id="id_password_helptext"><a href="/accounts/password/reset/">Forgot your password?</a></span>
+                    </div>
+                </div>
+                <div class="submit-btn-container">
+                    <button class="btn btn-black" type="submit">Sign in</button>      
+                </div>         
+        </form>
+        
+        <hr/>
+
+        <p class="grey"> or continue with Google </p>
+        <form method="post" action="{% provider_login_url 'google' %}">
+            {% csrf_token %}
+            <div class="submit-btn-container">
+                <button class="btn btn-white google">
+                    <div class="google-logo">
+                        <img src="https://lostandfound-bkt-0.s3.amazonaws.com/srcImage/GoogleLogo.png" alt="Button Image">
+                    </div>
+                    <span>Google</span>
+                </button>
+            </div>   
+        </form>
+    </div>
+
+    <div class="create-container"> 
+        <h4>Don't have an account?</h4>
+        <div class="btn-container">
+            <div class="btn-wrapper">
+                <a href="{% url 'account_signup' %}">
+                    <button class="btn btn-black">Create an account</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

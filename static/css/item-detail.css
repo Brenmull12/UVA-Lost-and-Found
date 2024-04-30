@@ -1,0 +1,276 @@
+h3 {
+    font-size: 30px;
+    display: inline;
+    color: black;
+}
+
+h4 {
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+hr {
+    width: 100%;
+}
+
+flagtext{
+    font-size: 13px;
+    text-align: right;
+}
+
+/* Containers ordered by nesting */ 
+.content {
+    display: flex;
+    justify-content: center;
+}
+
+.detail-content-container {
+    display: flex;
+    margin-top: 5vh;
+    width: 80vw;
+    height: 80vh;
+    padding: 3.75vh 0 3.75vh 0;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.detail-info {
+    flex: 1;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+}
+
+.info-top-container {
+    flex: 1;
+    overflow: auto;
+}
+
+.header-tag-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-container {
+    display: flex;
+    margin-bottom: 5px;
+    max-width: 100%;
+    word-wrap: break-word;
+    display: inline-block;
+}
+
+.tag-container {
+    width: fit-content;
+    border-radius: 15px;
+    font-size: 12px;
+    border: 1px solid black;
+    background-color: rgb(220, 239, 255);   
+    padding: 5px;
+}
+
+.tag-text {
+    display: inline;
+}
+
+.specific-info-container {
+    padding: 0 10px 0 0;
+}
+
+#location-container {
+    padding-top: 20px;
+}
+
+#description-container {
+    padding-right: 2.8125vh;
+    /*font-size: 14px;*/
+    max-height: 32%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#description-content p {
+    margin: 0; /* Remove default margin */
+}
+
+.description-content {
+    /* overflow-y: auto;  */
+    word-wrap: break-word;
+    display: inline-block;
+}
+
+.description-content {
+    max-width: 100%;
+}
+
+.info-bottom-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 3px;
+}
+
+.status-info {
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+.status-info h4 {
+    margin-right: 8px; /* Adjust spacing between h4 and p */
+}
+
+.status-info p {
+    font-size: 15px;
+    margin-bottom: .5rem;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.flag-post-container {
+    display: flex;
+    align-items: end;
+    margin-left: 8px;
+    flex-direction: column;
+    word-wrap: break-word;
+}
+
+#deleteBtn {
+    margin-left: 0;
+    height: auto;
+    flex-grow: 0;
+    margin-right: 0px;
+}
+
+.resolve-post-button-container{
+    margin-right:10px;
+}
+
+#resolutionModal.modal-dialog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 60px);
+}
+
+#resolutionMessageBtn {
+    background-color: rgb(237, 237, 237);
+    border-radius: 5px;
+}
+
+.files-container {
+    flex: 1; 
+    margin-right: 5%;
+    height: 100%; 
+    width: 100%; 
+}
+
+.file-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.file-content {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.image-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Distinction between the two separate aspect of images */
+.landscape {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.portrait {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Carousel elements */
+.carouselExampleIndicators {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border: 2px solid rgb(231, 231, 231); 
+    background-color: rgb(255, 255, 255);
+}
+
+.carousel-inner {
+    width: 100%;
+    height: 100%; 
+}
+
+.carousel-item {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    filter: invert(1); /* Invert the icon color to white */
+}
+
+/* Styles for devices with a minimum width of 769px (computers) */
+@media only screen and (min-width: 769px) {
+    .detail-content-container {
+        display: flex;
+    }
+
+    .files-container {
+        flex: 1;
+        margin-right: 5%;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+/* Styles for devices with a maximum width of 768px (phones) */
+@media only screen and (max-width: 768px) {
+    .detail-content-container {
+        flex-direction: column;
+        margin-bottom: 20px;
+        height: auto;
+    }
+
+    .files-container {
+        margin-top: 20px; /* Add some spacing between detail-info and files-container */
+        margin-bottom: 20px;
+    }
+
+    footer {
+        margin-top: 20px; 
+    }
+}
+
+::-webkit-scrollbar {
+    width: 3px; /* Width of the scroll bar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background color of the scroll track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scroll thumb */
+    border-radius: 5px; /* Border radius of the scroll thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scroll thumb on hover */
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+<html lang="en">
+
+{% block content %}
+    <div style="text-align: center; margin-top:3%">
+        <h1> Welcome to UVA Lost and Found</h1>
+    </div>
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/welcome-styles.css' %}">
+        <title>Welcome Page</title>
+    </head>
+
+    <body>
+    <div class="content">
+        {% if user.is_superuser %}
+            <div class="option-container">
+                <h2> Developer </h2>
+                <div class="btn-container report">
+                    <div class="btn-wrapper">
+                        <a href="{% url 'admin:index' %}">
+                            <button class="btn btn-primary"> Developer Site </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            {% comment %} Divider {% endcomment %}
+            <hr class="gradient">
+        {% endif %}
+
+        <div class="option-container">
+            {% if not user.is_site_admin %}
+                <h2> Report Item </h2>
+
+                <div class="btn-container report">
+                    {% if user.is_authenticated %}
+                        <div class="btn-wrapper">
+                            <a href="{% url 'items:report_lost' %}">
+                                <button class="btn btn-black">Lost</button>
+                            </a>
+                        </div>
+                    {% endif %}
+
+                    <div class="btn-wrapper">
+                        <a href="{% url 'items:report_found' %}">
+                            <button class="btn btn-white">Found</button>
+                        </a>
+                    </div>
+                </div>
+
+            {% else %}
+                <h2> Administrator Review </h2>
+                <div class="btn-container report">
+                    <div class="btn-wrapper">
+                        <a href="{% url 'site_admin:review' %}">
+                            <button class="btn btn-black"> Reports</button>
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        {% if user.is_authenticated %}
+            {% comment %} Divider {% endcomment %}
+            <hr class="gradient">
+    
+            <div class="option-container">
+                <h2> View Items </h2>
+    
+                <div class="btn-container report">
+                    <div class="btn-wrapper">
+                        <a href="{% url 'items:index_lost' %}">
+                            <button class="btn btn-black">Lost</button>
+                        </a>
+                    </div>
+    
+                    <div class="btn-wrapper">
+                        <a href="{% url 'items:index_found' %}">
+                            <button class="btn btn-white">Found</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% comment %} Divider {% endcomment %}
+        <hr class="gradient">
+    
+        <div class="option-container">
+            {% if not user.is_authenticated %}
+                <p class="grey"> or continue with more features by signing in</p>
+                <div class="btn-container signin">
+                    <div class="btn-wrapper">
+                        <a href="{% url 'account_login' %}">
+                            <button class="btn btn-black">Sign in</button>
+                        </a>
+                    </div>
+                </div>
+            {% else %}
+                <p class="grey"> or sign out</p>
+            <div class="btn-container signin">
+                <div class="btn-wrapper">
+                    <button type="button" class="btn btn-black" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                        Sign out
+                    </button>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    </body>
+{% endblock %}
+</html>

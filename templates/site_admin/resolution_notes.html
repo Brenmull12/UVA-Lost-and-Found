@@ -1,0 +1,45 @@
+<!-- In your templates/site_admin/resolution_notes.html -->
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+    </head>
+    <body>
+    <form action="{% url "site_admin:update" item.id %}" method="post">{% csrf_token %}
+        <div style="text-align: center; margin-top: 15px">
+            <h1>
+                {% if status_resolved %} 
+                    Resolve a Report
+                {% elif status_rejected %}
+                    Reject a Report
+                {% endif %}
+            </h1>
+            <p>
+                Item to be 
+                {% if status_resolved %} 
+                    resolved:
+                {% elif status_rejected %}
+                    rejected:
+                {% endif %} <b>{{ item }}</b> <br>
+                If you do not wish to add notes to this report, leave the text field blank and press submit.
+            </p>
+        </div>
+        <div class="form-container">
+            <input name="status" type="hidden" value="{{ status }}">
+            <textarea name="resolve_text" class="input-basic tall" maxlength="500"></textarea>
+        </div>
+        
+        <div style="padding-top: 20px; text-align: center">
+            <input type="submit" class="btn btn-black" value="Submit">
+            <a href="#" onclick="window.history.back(); return false;">
+                <button class="btn btn-white">Cancel</button>
+            </a>
+        </div>
+    </form>
+    </body>
+{% endblock %}

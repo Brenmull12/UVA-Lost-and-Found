@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/item-detail.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <div style="margin:auto; padding-top:2%">
+        <h1>
+            Review Reports
+        </h1>
+    </div>
+
+    <div class="container p-3">
+        {% if items %}
+            {% for item in items %}
+                <div class="item-container" id="{{ item.id }}">
+                    <div class="item-header">
+                        <div class="item-name">
+                            <h3 onclick="redirectToDetail('{{ item.id }}')">{{ item.item_name }}</h3>
+                        </div>
+
+                        {% if item.tag %}
+                            <div class="tag-container">
+                                <i class="fa fa-tag"></i>
+                                <div class="tag-text">
+                                    {{ item.get_tag_display }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    {% if item.files %}
+                        <div class="files-container">
+                            {% include 'items/carousel.html' %}
+                        </div>
+                    {% endif %}
+                    <div class="item-details">
+                        <div class="item-location">Location: {{ item.location }}</div>
+                        <div class="item-date">
+                            Date
+                            {% if item.is_found %} Found:
+                            {% else %} Lost: {% endif %}
+                            {{ item.date }}
+                        </div>
+                    </div>
+                    <a href="{% url 'site_admin:detail' item.id %}" class="details-link">Click to view more
+                        details</a>
+                </div>
+            {% endfor %}
+
+
+        {% else %}
+            {% block empty_message %}
+                <p> No items lost! </p>
+            {% endblock %}
+        {% endif %}
+    </div>
+    <script>
+        function redirectToDetail(itemId) {
+            window.location.href = "{% url 'site_admin:detail' 0 %}".replace("0", itemId);
+        }
+    </script>
+    </html>
+{% endblock %}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/item-detail.css' %}">
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Item Detail</title>
+    </head>
+
+    <body>
+    {% if user.is_authenticated %}
+        <div class="content">
+            <div class="detail-content-container">
+                <div class="detail-info">
+                    <div class="info-top-container">
+                        <div class="header-tag-container">
+                            <div class="header-container">
+                                <div>
+                                    <h3>{{ item }}</h3>
+                                </div>
+                            </div>
+                        
+                            {% if item.tag %}
+                            <div class="tag-container">
+                                <i class="fa fa-tag"></i>
+                                <p class="tag-text">{{ item.get_tag_display }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        {% if item.location %}
+                            <div class="specific-info-container" id="location-container">
+                                <h4> Location: </h4>
+                                <p> {{ location_name }} </p>
+                            </div>
+                        {% endif %}
+
+                        {% if item.date %}
+                            <div class="specific-info-container">
+                                <h4>
+                                Date 
+                                {% if item.is_found %} Found: 
+                                {% else %} Lost: {% endif %} 
+                                </h4>
+                                <p> {{ item.date }} </p>
+                            </div>
+                        {% endif %}
+
+                        <div class="specific-info-container">
+                            <h4> Contact information: </h4>
+                            <p> 
+                                {% if not item.email and not item.phone_number %}
+                                    No contact information was provided.
+                                {% endif %}
+                                {% if item.email %}
+                                    Email: {{ item.email }} <br>
+                                {% endif %}
+                                {% if item.phone_number %}
+                                    Phone: {{ item.phone_number }}
+                                {% endif %}
+                            </p>
+                        </div>
+
+                        <div class="specific-info-container" id="description-container">
+                            <h4>Description/Comments:</h4>
+                            <div class="description-content">
+                                {% if item.description %}
+                                    <p>{{ item.description }}</p>
+                                {% else %}
+                                    <p>No comment was left</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr/>
+
+                    <div class="info-bottom-container">
+                        <div class="status-container">
+                            {% if user == item.user or user.is_site_admin %}
+                                <div class="status-info">
+                                    <h4>Post status:</h4>
+                                    <p>{{ item.get_status_display }}</p>
+                                </div>
+                                {% if item.get_status_display == "Approved" or item.get_status_display == "Rejected" %}
+                                    <div>
+                                        {% include 'items/resolution_modal.html' %}
+                                        <button id="resolutionMessageBtn" type="submit" class="btn btn-sm"
+                                                data-bs-toggle="modal" data-bs-target="#resolutionModal">
+                                            View Status Message
+                                        </button>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+
+                        <div class="post-actions">
+                            {% if can_flag and user != item.user %}
+                                {% include 'items/flag_post_modal.html' %}
+                                <div class="flag-post-container">
+                                    <button style="padding-top: 0" id="flagBtn" type="submit" class="btn btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#flagPostModal">
+                                        <i class="fa fa-flag"></i> Flag
+                                    </button>
+                                    <flagtext> If this post contains concerning content, flag it for review.</flagtext>
+                                </div>
+                            {% elif user == item.user and is_rejected %}
+                                <form method="post" action="{% url 'items:flag' item.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm"><i class="fa fa-flag"></i> Appeal Rejection</button>
+                                </form>
+                            {% endif %}
+
+                            {% if user == item.user %}
+                                <div class="delete-post-button-container">
+                                    {% include 'items/delete_modal.html' %}
+                                    <button id="deleteBtn" type="submit" class="btn btn-danger btn-sm"
+                                            data-bs-toggle="modal" data-bs-target="#deletePostModal">
+                                        <i class="fa fa-trash"></i> Delete
+                                    </button>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                {% if item.files %}
+                    <div class="files-container">
+                        {% include 'items/carousel.html' %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+        <p>
+            As an anonymous user, you do not have access to this page. Please log in to view posts.
+        </p>
+    {% endif %}
+    </body>
+{% endblock %}
+
+
+

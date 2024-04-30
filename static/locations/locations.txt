@@ -1,0 +1,227 @@
+--- ACADEMIC BUILDINGS ---
+
+1515 University Avenue
+2200 Old Ivy Road
+2400 Old Ivy Road
+2476 Old Ivy Road
+310 Old Ivy Way
+315 Old Ivy Way
+Aerospace Research Laboratory
+Albert H Small Building
+Alden House (Observatory House 1)
+Alderman Library
+Alumni Hall
+Amphitheater
+Arlington Blvd 1910
+Astronomy Building
+Bavaro Hall (Curry School of Education)
+Bayly Building (The Fralin Museum of Art)
+Bemiss House (University Press)
+Biology Greenhouse
+Booker House (Provost's Office)
+Brooks Hall
+Bryan Hall
+Bryant Hall at Scott Stadium
+Campbell Hall (School of Architecture)
+Carr's Hill (President's House)
+Carruthers Hall
+Chemical Engineering Research
+Chemistry Building
+Child Care Center
+Clark Hall
+Clemons Library
+Cocke Hall
+Colony Plaza / 2205 Fontaine Ave
+Darden School of Business Abbott Center
+Classroom Building
+Darden Library
+Faculty Building
+Saunders Hall
+Sponsors Hall East
+Sponsors Hall West
+Dawson's Row
+Dawson's Row #1
+Dawson's Row #2
+Dawson's Row #3
+Dawson's Row #4
+Dell Building #1
+Dell Building #2
+Drama Building (Culbreth and Helms Theaters)
+Drama Ed. Building Addition (Ruth Caplin Theatre)
+Dynamics Building (2015 Ivy Road)
+Faulkner House (Miller Center of Public Affairs)
+Fayerweather Hall
+Fluids Research Laboratory
+Fontana Food Center
+Garrett Hall
+Gibson Hall
+Gilmer Hall
+Halsey Hall
+Harrison Institute & Small Special Collections Library
+High Energy Physics Lab
+Hotel D
+Hotel E (Colonnade Hotel/Garden Room/West Range Cafe)
+Hunter Smith Band Building
+Ivy Stacks
+Jefferson Hall (Hotel C)
+Jefferson Quarry
+Jefferson Scholars Foundation
+Judge Advocate General's School (TJAGLCS)
+Kerchof Hall
+Lacy Hall
+Lady Astor Pavilion
+Lambeth House
+Law School (David A. Harrison III Law Grounds)
+Clay Hall
+Hunton and Williams Hall
+Slaughter Hall
+Student-Faculty Center
+Withers-Brown Hall
+Leake Building (Facilities Management)
+Levering Hall (Hotel F)
+Lorna Sundberg International Center
+Madison Hall (President's Office)
+Madison House
+Materials Science
+Maury Hall
+McCormick Observatory
+Mechanical Engineering
+Memorial to Enslaved Laborers
+Michie North (918 Emmet Street)
+Michie South (914 Emmet Street)
+Millmont Cottage (1023 Millmont St)
+Millmont Building (1023 Millmont St)
+Minor Hall
+Monroe Hall
+Montesano (2333 Old Ivy Rd)
+Nau Hall
+New Cabell Hall
+Newcomb Hall (Student Center)
+Observatory Hill Dining
+Observatory Mountain Engineering Research Facility
+Old Cabell Hall
+Old Ivy Road Office Building
+Olsson Hall
+O'Neil Hall
+Parking & Transportation
+Pavilion VII/Colonnade Club
+Peabody Hall (Undergraduate Admission Office)
+Peyton House
+Peyton House Modular Office
+Physical and Life Sciences Building
+Physics/Jesse Beams Laboratory
+Printing Service Center
+Printing Service Center Addition
+Randall Hall
+Rice Hall
+Robertson Hall (McIntire School of Commerce)
+Rotunda
+Rouss Hall (McIntire School of Commerce)
+Ruffin Hall (Studio Arts)
+Ruffner Hall (Curry School of Education)
+Runk Dining Hall
+Shelburne Hall (VA Transportation Research Council)
+Skipwith Hall
+South Lawn Commons
+Spec Material Handling/Env Health & Safety
+Stone Hall (National Radio Astronomy Observatory)
+Stores Warehouse (Recycling Office)
+Student Activities Building
+Thornton Hall
+University Chapel
+University Press Warehouse
+University Visitor Center/University Police
+Varsity Hall
+Washington Hall (Hotel B)
+Watson Manor
+Wilsdorf Hall
+Wilson Hall
+WTJU Offices
+Zehmer Hall (School of Continuing & Prof Studies)
+
+--- PARKING GARAGES ---
+
+11th Street Parking Garage
+Arena Parking Garage
+Bookstore/Central Grounds Parking
+Culbreth Road Garage
+Darden Parking Garage
+East Parking Garage
+Emmet/Ivy Garage
+Nursing School Garage (under McLeod Hall)
+Old Ivy Parking Structure
+South Parking Garage
+Stadium Parking Garage
+West Scott Stadium Parking
+
+--- HEALTH SYSTEM ---
+
+1003 West Main Street
+1107 West Main Street
+1200 West Main Street
+999 Grove Street (Lee Building)
+Battle Building
+Claude Moore Health Sciences Library
+Claude Moore Medical Education Building
+Claude Moore Nursing Education Building
+Cobb Hall
+Corner Building
+Education Resource Center
+Elson Student Health Center
+Emergency Department
+Emily Couric Clinical Cancer Center
+Hospital Link
+Hospitality House Blue Cottage
+Jefferson Park Medical Office Building
+KCRC Commonwealth Court
+Malcolm W Cole Child Care Center
+McKim Hall
+McLeod Hall
+Medical Research Buildings
+Biomed. Eng. & Med. Sci. Bldg. (MR-5)
+Carter-Harrison Research Bldg (MR-6)
+Medical Research Lab (MR-4)
+Medical School Building
+Pinn Hall
+Primary Care Center
+Primary Care Center Annex
+Stacey Hall
+University Hospital
+UVA Clinical Laboratory
+UVA Community Credit Union (1018 West Main)
+UVA Outpatient Surgery Center
+West Complex
+
+--- ATHLETIC/RECREATIONAL FACILITIES ---
+
+Aquatic & Fitness Center
+Athletic Village
+Carr's Hill Field
+Carr's Hill Field Support Facility
+Copeley Field
+Dell (Perry-Fishburne) Tennis Courts
+Dell Basketball Courts
+Disharoon Park
+Frank C. McCue III Center
+George Welsh Indoor Practice Facility
+John Paul Jones Arena
+Klockner Stadium
+Lambeth Field
+Lannigan Field
+Madison Bowl
+Memorial Gymnasium
+Nameless Field
+North Grounds Recreation Center
+The Park
+Scott Stadium at Carl Smith Center
+Sheridan Snyder Tennis Center
+Slaughter Recreation Center
+The Park - Indoor Field #7
+University Hall Turf Field
+Varsity Softball Facility
+
+--- LANGUAGE HOUSES ---
+
+Barringer Mansion/French House
+Casa Bolivar/Spanish House
+Shea House
