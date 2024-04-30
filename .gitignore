@@ -12,6 +12,7 @@ media
 
 # Static directory created during collectstatic # 
 /staticfiles/
+
 # Backup files # 
 *.bak 
 
@@ -111,7 +112,6 @@ venv/
 ENV/ 
 env.bak/ 
 venv.bak/
-tutorial-env
 tutorial-env/
 
 # mkdocs documentation 
